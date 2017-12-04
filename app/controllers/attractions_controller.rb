@@ -32,6 +32,7 @@ class AttractionsController < ApplicationController
   def update
     binding.pry
     @attraction = Attraction.update(attraction_params)
+    binding.pry
     redirect_to attraction_path(@attraction)
   end
 
