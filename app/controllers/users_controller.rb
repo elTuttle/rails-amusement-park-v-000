@@ -22,7 +22,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    if !session[:user_id].nil?
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def sign_in
@@ -31,7 +35,7 @@ class UsersController < ApplicationController
 
   def sign_in_post
     @user = User.find_by(name: params[:user][:name])
-    if @user && @user.authenticate(@user.password_digest)
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else

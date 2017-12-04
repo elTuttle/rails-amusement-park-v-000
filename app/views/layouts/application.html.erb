@@ -31,10 +31,16 @@
 
     <!-- content -->
     <div class="container"  role="main">
+      <% if flash[:message] != nil %>
+        <%= flash[:message] %>
+      <% end %>
+
       <%= yield %>
+
       <%if session[:user_id] != nil%>
         <%= link_to "See attractions", attractions_path %>
       <%end%>
+
       <%if session[:user_id] != nil%>
         <%= link_to "Log Out", "/users/#{session[:user_id]}", method: :delete%>
       <%end%>
