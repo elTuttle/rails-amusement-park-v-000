@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user.nausea = params[:user][:nausea]
     @user.tickets = params[:user][:tickets]
     @user.height = params[:user][:height]
+    @user.admin = params[:user][:admin]
     if @user.save
       session[:user_id] = @user.id
       redirect_to user_path(@user)
@@ -47,6 +48,7 @@ class UsersController < ApplicationController
     if session[:user_id] != nil
       session[:user_id] = nil
     end
+    redirect_to '/'
   end
 
   def welcome
