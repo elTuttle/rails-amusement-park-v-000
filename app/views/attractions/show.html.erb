@@ -1,0 +1,11 @@
+<%= @attraction.name %>
+<%= @attraction.tickets %>
+<%= @attraction.nausea_rating %>
+<%= @attraction.happiness_rating %>
+<%= @attraction.min_height %>
+<form action="/attractions/<%= @attraction.id%>/ride" method="post">
+  <input type="submit" value="Go on this ride">
+</form>
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path%>
+<% end %>
