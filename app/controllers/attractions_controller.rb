@@ -32,7 +32,7 @@ class AttractionsController < ApplicationController
   def update
     @attraction = Attraction.find(params[:id])
     @attraction.update(attraction_params)
-    binding.pry
+    #binding.pry
     redirect_to attraction_path(@attraction)
   end
 
